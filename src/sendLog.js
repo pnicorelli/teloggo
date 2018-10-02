@@ -1,0 +1,61 @@
+const https = require('https');
+var querystring = require('querystring');
+const utils = require('./utils');
+
+const host = 'api.telegram.org';
+const token = '478434996:AAHTDx5dUmQ1GSx1v2lJNk0a2U4W3NH28F4';
+const chat_id = 129071298
+
+function sendLog(config, message, level){
+  const token = utils.parseToken(config);
+  if( token === null){
+    throw new Error('teloggo needs a token!');
+  }
+  const chatId = utils.parseChatId(config);
+  if( token === null){
+    throw new Error('teloggo needs a chatId!');
+  }
+
+
+  const packet = querystring.stringify({
+    chat_id: chat_id,
+    text: message,
+    parse_mode: 'Markdown'
+  });
+
+  const apiUrl = `/bot${token}/sendMessage`
+  const options = {
+      host: host,
+      port: '443',
+      path: apiUrl,
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      }
+  };
+
+  // request object
+  var req = https.request(options, function (res) {
+    var result = '';
+    res.on('data', function (chunk) {
+      result += chunk;
+    });
+    res.on('end', function () {
+      return
+    });
+    res.on('error', function (err) {
+      throw new Error(err);
+    })
+  });
+
+  // req error
+  req.on('error', function (err) {
+    throw new Error(err);
+  });
+
+  //send request witht the postData form
+  req.write(packet);
+  req.end();
+}
+
+module.exports = exports = sendLog;
