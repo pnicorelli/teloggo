@@ -1,11 +1,16 @@
 {
   "name": "teloggo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a console.log in telegram",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/*"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pnicorelli/teloggo.git"
+  },
+  "keywords": ["telegram", "logger"],
   "author": "p.nicorelli@gmail.com",
-  "license": "ISC"
+  "license": "GPL v2"
 }

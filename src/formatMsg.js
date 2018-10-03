@@ -1,11 +1,12 @@
 function chunk(str, size) {
-    return str.match(new RegExp('.{1,' + size + '}$', 'gms'));
+    return str.match(new RegExp('.{1,' + size + '}\\b', 'gms'));
 }
 
 function getToday(){
   let d = new Date();
   return `${d.getFullYear()}/${('0'+(d.getMonth()+1)).slice(-2)}/${('0'+d.getDate()).slice(-2)}_${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
 }
+
 function formatMsg(config, message){
   let domain = (config.domain)?config.domain:'teloggo';
   let code = '```';
