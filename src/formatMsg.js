@@ -2,9 +2,13 @@ function chunk(str, size) {
     return str.match(new RegExp('.{1,' + size + '}', 'gms'));
 }
 
+function twoDigitPadding(s){
+  return ('0'+s).slice(-2);
+}
+
 function getToday(){
   let d = new Date();
-  return `${d.getFullYear()}/${('0'+(d.getMonth()+1)).slice(-2)}/${('0'+d.getDate()).slice(-2)}_${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+  return `${d.getFullYear()}/${twoDigitPadding(d.getMonth()+1)}/${twoDigitPadding(d.getDate())}_${twoDigitPadding(d.getHours())}:${twoDigitPadding(d.getMinutes())}:${twoDigitPadding(d.getSeconds())}`;
 }
 
 function formatMsg(config, message){

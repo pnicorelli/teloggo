@@ -6,6 +6,11 @@ const formatMsg = require('./src/formatMsg');
 
 class teloggo{
   constructor(config){
+    if( !config ){
+      config = {
+        domain: 'teloggo'
+      }
+    }
     this.config = config;
   }
 

@@ -1,10 +1,10 @@
 {
   "name": "teloggo",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a console.log in telegram",
   "main": "index.js",
   "scripts": {
-    "test": "node test/*"
+    "test": "find test/*js -exec node {} \\;"
   },
   "repository": {
     "type": "git",

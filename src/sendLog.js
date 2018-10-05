@@ -3,8 +3,6 @@ var querystring = require('querystring');
 const utils = require('./utils');
 
 const host = 'api.telegram.org';
-const token = '478434996:AAHTDx5dUmQ1GSx1v2lJNk0a2U4W3NH28F4';
-const chat_id = 129071298
 
 function sendLog(config, message, level){
   const token = utils.parseToken(config);
@@ -12,13 +10,13 @@ function sendLog(config, message, level){
     throw new Error('teloggo needs a token!');
   }
   const chatId = utils.parseChatId(config);
-  if( token === null){
+  if( chatId === null){
     throw new Error('teloggo needs a chatId!');
   }
 
 
   const packet = querystring.stringify({
-    chat_id: chat_id,
+    chat_id: chatId,
     text: message,
     parse_mode: 'Markdown'
   });
