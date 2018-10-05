@@ -1,6 +1,6 @@
 # teloggo
 
-Use telegram as `console.log`
+Use telegram like `console.log`
 
 It will handle long message and object as input.
 

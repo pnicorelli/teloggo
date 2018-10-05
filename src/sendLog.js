@@ -41,6 +41,12 @@ function sendLog(config, message, level){
       result += chunk;
     });
     res.on('end', function () {
+      //check the telegram response
+      let response = JSON.parse(result);
+      if( !response.ok ){
+        let err = `HTTP-${response.error_code}: ${response.description}\nPacket:\n${packet}\n\n`;
+        throw new Error(err)
+      }
       return
     });
     res.on('error', function (err) {

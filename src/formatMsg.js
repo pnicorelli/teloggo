@@ -1,5 +1,5 @@
 function chunk(str, size) {
-    return str.match(new RegExp('.{1,' + size + '}\\b', 'gms'));
+    return str.match(new RegExp('.{1,' + size + '}', 'gms'));
 }
 
 function getToday(){
